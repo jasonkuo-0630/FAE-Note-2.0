@@ -8,8 +8,11 @@ window.FAE.config = {
   updated: "2026-07-30"
 };
 
-window.FAE.navigation = [];
-window.FAE.products = [];
+window.FAE.areaGroups = [];
+window.FAE.areas = [];
+window.FAE.noteTypes = [];
+window.FAE.evidenceTypes = [];
+window.FAE.modules = {};
 window.FAE.sources = [];
 window.FAE.notes = [];
 

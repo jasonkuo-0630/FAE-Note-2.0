@@ -4,8 +4,14 @@ window.FAE.validateData = function validateData() {
   const sourceIds = new Set(window.FAE.sources.map((source) => source.id));
   const noteIds = new Set(window.FAE.notes.map((note) => note.id));
   const validTypes = new Set(
-    window.FAE.navigation.flatMap((group) =>
-      group.items.map((item) => item.filter.value)
+    window.FAE.noteTypes
+      .filter((type) => type.id !== "all")
+      .map((type) => type.id)
+  );
+  const validAreas = new Set(window.FAE.areas.map((area) => area.id));
+  const validModules = new Map(
+    Object.entries(window.FAE.modules).flatMap(([areaId, modules]) =>
+      modules.map((module) => [module.id, areaId])
     )
   );
 
@@ -18,6 +24,21 @@ window.FAE.validateData = function validateData() {
     if (!validTypes.has(note.type)) {
       issues.push(`筆記 ${note.id} 使用未知類型：${note.type}`);
     }
+    if (!validAreas.has(note.areaId)) {
+      issues.push(`筆記 ${note.id} 使用未知領域：${note.areaId}`);
+    }
+    if (
+      note.moduleId &&
+      (!validModules.has(note.moduleId) ||
+        validModules.get(note.moduleId) !== note.areaId)
+    ) {
+      issues.push(`筆記 ${note.id} 的章節不屬於主要領域：${note.moduleId}`);
+    }
+    (note.relatedAreas || []).forEach((areaId) => {
+      if (!validAreas.has(areaId)) {
+        issues.push(`筆記 ${note.id} 的相關領域不存在：${areaId}`);
+      }
+    });
 
     (note.related || []).forEach((relatedId) => {
       if (!noteIds.has(relatedId)) {
@@ -36,6 +57,10 @@ window.FAE.validateData = function validateData() {
       !(note.sources || []).length
     ) {
       issues.push(`筆記 ${note.id} 標為官方依據，但沒有來源`);
+    }
+
+    if (!note.sections || !note.sections.length) {
+      issues.push(`筆記 ${note.id} 沒有任何 sections 內容`);
     }
   });
 

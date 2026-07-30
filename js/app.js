@@ -2,6 +2,7 @@
   const themeButton = document.getElementById("themeButton");
   const searchInput = document.getElementById("searchInput");
   const statusFilters = document.getElementById("statusFilters");
+  const typeFilters = document.getElementById("typeFilters");
   const content = document.getElementById("content");
   const contentScroll = document.getElementById("contentScroll");
   const menuButton = document.getElementById("menuButton");
@@ -51,6 +52,22 @@
       .join("");
   }
 
+  function renderTypeFilters() {
+    typeFilters.innerHTML = window.FAE.noteTypes
+      .map(
+        (type) => `
+          <button
+            type="button"
+            class="filter-pill${window.FAE.state.type === type.id ? " active" : ""}"
+            data-type="${window.FAE.escapeHtml(type.id)}"
+          >
+            ${window.FAE.escapeHtml(type.label)}
+          </button>
+        `
+      )
+      .join("");
+  }
+
   function renderHealth() {
     const issues = window.FAE.validateData();
     const healthDot = document.getElementById("healthDot");
@@ -67,6 +84,7 @@
   function render() {
     window.FAE.renderSidebar();
     renderStatusFilters();
+    renderTypeFilters();
     renderHealth();
     content.innerHTML =
       window.FAE.state.viewId === "home" && !window.FAE.state.query
@@ -98,16 +116,183 @@
     menuButton.setAttribute("aria-expanded", "false");
   }
 
+  function getStoredNavigation() {
+    try {
+      return JSON.parse(localStorage.getItem("fae-notes-navigation")) || null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function storeNavigation() {
+    try {
+      localStorage.setItem(
+        "fae-notes-navigation",
+        JSON.stringify({
+          viewId: window.FAE.state.viewId,
+          moduleId: window.FAE.state.moduleId,
+          expandedAreaId: window.FAE.state.expandedAreaId
+        })
+      );
+    } catch (error) {
+      // file:// 或瀏覽器限制 localStorage 時，導覽仍可正常使用。
+    }
+  }
+
+  function restoreNavigation() {
+    const stored = getStoredNavigation();
+    if (!stored) return;
+
+    if (
+      stored.viewId === "home" ||
+      window.FAE.getNavigationItem(stored.viewId)
+    ) {
+      window.FAE.state.viewId = stored.viewId;
+    }
+
+    const areaId = window.FAE.getCurrentAreaId();
+    const storedModule =
+      stored.moduleId === "all"
+        ? "all"
+        : window.FAE.getModuleById(areaId, stored.moduleId)?.id;
+
+    window.FAE.state.moduleId = storedModule || "all";
+
+    if (
+      stored.expandedAreaId &&
+      window.FAE.getModulesForArea(stored.expandedAreaId).length
+    ) {
+      window.FAE.state.expandedAreaId = stored.expandedAreaId;
+    }
+  }
+
   function selectView(viewId) {
     window.FAE.state.viewId = viewId;
+    window.FAE.state.moduleId = "all";
+    storeNavigation();
     render();
     contentScroll.scrollTo({ top: 0, behavior: "smooth" });
     closeSidebar();
   }
 
+  function jumpToNote(noteId) {
+    const note = window.FAE.notes.find((n) => n.id === noteId);
+    if (!note) return;
+    window.FAE.state.viewId = note.areaId;
+    window.FAE.state.moduleId = note.moduleId || "all";
+    window.FAE.state.query = "";
+    searchInput.value = "";
+    window.FAE.state.expandedNotes.add(noteId);
+    storeNavigation();
+    render();
+    contentScroll.scrollTo({ top: 0, behavior: "smooth" });
+    requestAnimationFrame(() => {
+      const el = document.getElementById("note-" + noteId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        el.classList.add("flash");
+        setTimeout(() => el.classList.remove("flash"), 1200);
+      }
+    });
+    closeSidebar();
+  }
+
+  function scrollExpandedNoteToTop(noteId) {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const card = document.getElementById("note-" + noteId);
+        if (!card) return;
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
+  function toggleNote(noteId) {
+    const card = document.getElementById("note-" + noteId);
+    const willExpand = !window.FAE.state.expandedNotes.has(noteId);
+
+    if (willExpand) {
+      window.FAE.state.expandedNotes.add(noteId);
+    } else {
+      window.FAE.state.expandedNotes.delete(noteId);
+    }
+
+    if (!card) {
+      render();
+      return;
+    }
+
+    card.classList.toggle("expanded", willExpand);
+    card
+      .querySelector("[data-note-toggle]")
+      ?.setAttribute("aria-expanded", String(willExpand));
+    card
+      .querySelector(".note-body-shell")
+      ?.setAttribute("aria-hidden", String(!willExpand));
+
+    if (willExpand) {
+      scrollExpandedNoteToTop(noteId);
+    }
+  }
+
+  content.addEventListener("click", (event) => {
+    const toggle = event.target.closest("[data-note-toggle]");
+    if (toggle) {
+      toggleNote(toggle.dataset.noteToggle);
+      return;
+    }
+
+    const relatedChip = event.target.closest(".related-chip");
+    if (relatedChip) {
+      jumpToNote(relatedChip.dataset.noteId);
+    }
+  });
+
+  content.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const toggle = event.target.closest("[data-note-toggle]");
+    if (!toggle) return;
+    event.preventDefault();
+    toggleNote(toggle.dataset.noteToggle);
+  });
+
   document.getElementById("sidebarNav").addEventListener("click", (event) => {
+    const toggleButton = event.target.closest("[data-toggle-area]");
+    if (toggleButton) {
+      const areaId = toggleButton.dataset.toggleArea;
+      window.FAE.state.expandedAreaId =
+        window.FAE.state.expandedAreaId === areaId ? null : areaId;
+      storeNavigation();
+      render();
+      return;
+    }
+
     const button = event.target.closest("[data-view]");
-    if (button) selectView(button.dataset.view);
+    if (!button) return;
+
+    const isAreaRow = !button.dataset.module;
+    const areaId = button.dataset.view;
+
+    window.FAE.state.viewId = areaId;
+    window.FAE.state.moduleId = button.dataset.module || "all";
+
+    if (isAreaRow && window.FAE.getModulesForArea(areaId).length) {
+      window.FAE.state.expandedAreaId =
+        window.FAE.state.expandedAreaId === areaId ? null : areaId;
+    }
+
+    storeNavigation();
+    render();
+    contentScroll.scrollTo({ top: 0, behavior: "smooth" });
+    closeSidebar();
+  });
+
+  document.getElementById("sidebarNav").addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const target = event.target.closest("[data-view], [data-toggle-area]");
+    if (!target) return;
+    event.preventDefault();
+    target.click();
   });
 
   document.getElementById("brandHomeButton").addEventListener("click", () => {
@@ -120,6 +305,13 @@
     const button = event.target.closest("[data-status]");
     if (!button) return;
     window.FAE.state.status = button.dataset.status;
+    render();
+  });
+
+  typeFilters.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-type]");
+    if (!button) return;
+    window.FAE.state.type = button.dataset.type;
     render();
   });
 
@@ -166,5 +358,6 @@
       : window.FAE.config.defaultTheme);
 
   setTheme(preferredTheme);
+  restoreNavigation();
   render();
 })();
