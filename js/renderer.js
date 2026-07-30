@@ -150,11 +150,62 @@ window.FAE.renderNoteCard = function renderNoteCard(note) {
   `;
 };
 
+window.FAE.getProductById = function getProductById(productId) {
+  return window.FAE.products.find((product) => product.id === productId) || null;
+};
+
+window.FAE.renderModuleOverview = function renderModuleOverview(areaId) {
+  const product = window.FAE.getProductById(areaId);
+  const modules = product?.modules || [];
+
+  if (!modules.length) return "";
+
+  const cards = modules
+    .map((module) => {
+      const noteCount = window.FAE.notes.filter(
+        (note) =>
+          note.areaId === areaId &&
+          note.moduleId === module.id
+      ).length;
+
+      return `
+        <article class="module-card">
+          <div class="module-card-header">
+            <h3>${window.FAE.escapeHtml(module.title)}</h3>
+            <span class="module-note-count">${noteCount} 篇</span>
+          </div>
+          <p>${window.FAE.escapeHtml(module.description)}</p>
+        </article>
+      `;
+    })
+    .join("");
+
+  return `
+    <section class="module-overview">
+      <div class="section-heading">
+        <div>
+          <h2>${window.FAE.escapeHtml(product.title)} 章節</h2>
+          <p>依照實際 Training 與現有筆記內容規劃</p>
+        </div>
+      </div>
+
+      <div class="module-grid">
+        ${cards}
+      </div>
+    </section>
+  `;
+};
+
 window.FAE.renderView = function renderView() {
   const view = window.FAE.getNavigationItem(window.FAE.state.viewId);
   const notes = window.FAE.getFilteredNotes();
   const hasQuery = Boolean(window.FAE.state.query.trim());
   const cards = notes.map(window.FAE.renderNoteCard).join("");
+
+  const areaId =
+    view?.filter?.field === "areaId"
+      ? view.filter.value
+      : null;
 
   return `
     <header class="view-header">
@@ -163,6 +214,9 @@ window.FAE.renderView = function renderView() {
       <p class="page-subtitle">${window.FAE.escapeHtml(view.description)}</p>
       <div class="results-meta">${notes.length} 篇符合目前條件</div>
     </header>
+
+    ${window.FAE.renderModuleOverview(areaId)}
+
     ${
       notes.length
         ? `<section class="notes-list">${cards}</section>`
