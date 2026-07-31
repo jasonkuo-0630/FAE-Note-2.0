@@ -209,14 +209,103 @@ window.FAE.renderSections = function renderSections(note) {
 };
 
 window.FAE.renderNoteSources = function renderNoteSources(note) {
-  const sources = (note.sources || [])
-    .map((citation) => window.FAE.sources.find((s) => s.id === citation.sourceId))
+  const citations = (note.sources || [])
+    .map((citation) => {
+      const source = window.FAE.sources.find((s) => s.id === citation.sourceId);
+      return source ? { citation, source } : null;
+    })
     .filter(Boolean);
-  if (!sources.length) return "";
-  const chips = sources
-    .map((s) => `<span class="source-chip">${window.FAE.escapeHtml(s.title)}</span>`)
+
+  if (!citations.length) return "";
+
+  const entries = citations
+    .map(({ citation, source }) => {
+      const titleHtml = source.url
+        ? `<a class="source-chip" href="${window.FAE.escapeHtml(source.url)}" target="_blank" rel="noopener">${window.FAE.escapeHtml(source.title)}</a>`
+        : `<span class="source-chip">${window.FAE.escapeHtml(source.title)}</span>`;
+
+      const locationParts = [];
+      if (citation.chapter) locationParts.push(`章節：${window.FAE.escapeHtml(citation.chapter)}`);
+      if (citation.pages) locationParts.push(`頁碼：${window.FAE.escapeHtml(citation.pages)}`);
+      const locationHtml = locationParts.length
+        ? `<div class="source-location">${locationParts.join("　")}</div>`
+        : "";
+
+      const keywords = citation.keywords || [];
+      const keywordsHtml = keywords.length
+        ? `
+          <div class="source-keywords">
+            <span class="meta-label">PDF 搜尋關鍵字</span>
+            ${keywords
+              .map(
+                (kw) => `
+                <span
+                  class="keyword-chip"
+                  data-tooltip="複製關鍵字"
+                  data-keyword="${window.FAE.escapeHtml(kw)}"
+                  onclick="window.FAE.copyKeyword(this)"
+                >${window.FAE.escapeHtml(kw)}</span>
+              `
+              )
+              .join("")}
+          </div>
+        `
+        : "";
+
+      return `<div class="source-entry">${titleHtml}${locationHtml}${keywordsHtml}</div>`;
+    })
     .join("");
-  return `<div class="source-row"><span class="related-label">參考來源</span>${chips}</div>`;
+
+  return `
+    <div class="source-row">
+      <span class="related-label">參考來源</span>
+      <div class="source-list">${entries}</div>
+    </div>
+  `;
+};
+
+/* 點擊關鍵字複製到剪貼簿。file:// 環境下 navigator.clipboard 常會被拒絕權限，
+   所以優先試 Clipboard API，失敗就退回傳統 execCommand 複製，確保雙擊開啟本機檔案也能用。 */
+function fallbackCopyText(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch (err) {
+    ok = false;
+  }
+  document.body.removeChild(ta);
+  return ok;
+}
+
+window.FAE.copyKeyword = function copyKeyword(el) {
+  const text = el.dataset.keyword || el.textContent.trim();
+
+  const showResult = (ok) => {
+    el.classList.toggle("copied", ok);
+    el.classList.toggle("copy-failed", !ok);
+    el.dataset.tooltip = ok ? "已複製" : "複製失敗，請手動選取";
+    clearTimeout(el._copyTimer);
+    el._copyTimer = setTimeout(() => {
+      el.classList.remove("copied", "copy-failed");
+      el.dataset.tooltip = "複製關鍵字";
+    }, 1400);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => showResult(true))
+      .catch(() => showResult(fallbackCopyText(text)));
+  } else {
+    showResult(fallbackCopyText(text));
+  }
 };
 
 window.FAE.renderRelatedNotes = function renderRelatedNotes(note) {

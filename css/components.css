@@ -1010,7 +1010,6 @@
   height: 14px;
 }
 
-.source-row,
 .related-row {
   display: flex;
   flex-wrap: wrap;
@@ -1019,6 +1018,40 @@
   margin-top: 14px;
   padding-top: 14px;
   border-top: 1px solid var(--border);
+}
+
+.source-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.source-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.source-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.source-location {
+  color: var(--text-tertiary);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.source-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px 10px;
 }
 
 .related-label {
@@ -1050,12 +1083,72 @@
 }
 
 .source-chip {
+  align-self: flex-start;
   padding: 4px 11px;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--bg);
   color: var(--text-secondary);
   font-size: 12.5px;
+  text-decoration: none;
+}
+
+a.source-chip:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* 關鍵字：不放圖示，滑鼠移上去用小提示告訴使用者可以點擊複製；
+   點擊後複製到剪貼簿，提示文字暫時換成「已複製」再自動變回來。 */
+.keyword-chip {
+  position: relative;
+  padding: 1px 3px;
+  border-bottom: 1px dashed var(--text-tertiary);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.keyword-chip:hover {
+  border-bottom-color: var(--blue);
+  color: var(--blue);
+}
+
+.keyword-chip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+  z-index: 5;
+}
+
+.keyword-chip:hover::after,
+.keyword-chip.copied::after,
+.keyword-chip.copy-failed::after {
+  opacity: 1;
+}
+
+.keyword-chip.copied {
+  border-bottom-color: var(--green);
+  color: var(--green);
+}
+
+.keyword-chip.copy-failed {
+  border-bottom-color: var(--red);
+  color: var(--red);
 }
 
 @media (prefers-reduced-motion: reduce) {
