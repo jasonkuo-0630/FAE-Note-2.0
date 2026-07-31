@@ -68,6 +68,10 @@ window.FAE.validateData = function validateData() {
     if (!note.sections || !note.sections.length) {
       issues.push(`筆記 ${note.id} 沒有任何 sections 內容`);
     }
+
+    if (note.updated && !/^\d{4}-\d{2}-\d{2}$/.test(note.updated)) {
+      issues.push(`筆記 ${note.id} 的 updated 日期格式不對：${note.updated}（應為 YYYY-MM-DD）`);
+    }
   });
 
   return issues;

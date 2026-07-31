@@ -15,6 +15,7 @@ window.FAE.notes.push(
     moduleId: "vms-live-view-layout",
     type: "feature",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-live-view-layout-02"],
@@ -84,7 +85,7 @@ window.FAE.notes.push(
         type: "list",
         title: "Camera Live View Tools 選單項目",
         items: [
-          "<strong>Monitor</strong>：啟用或停止該 Camera 的監控狀態。<br>Camera 加入 Layout 後可觀看 Live View，但 Recording、Video Analysis 與 I/O Applications 等監控相關功能，需要 Start Monitoring 後才會正式啟用。",
+          "<strong>Monitor</strong>：啟用或停止該 Camera 的 Camera Monitoring。<br>Camera 加入 Layout 只代表顯示 Live View；Recording、Video Analysis 與 Motion Event Trigger 等 Camera 功能需啟用 Camera Monitoring。I/O 功能則需另外啟用 I/O Monitoring，也可使用 Start All Monitoring 同時啟用兩者。",
           "<strong>Add to Bookmark</strong>：在目前錄影時間點建立書籤。",
           "<strong>Properties</strong>：調整顯示屬性。",
           "<strong>Close</strong>：將 Camera 從目前 Layout Grid 移除，只是關閉該格的 Live View 顯示；不會刪除 Camera，也不等於停止該 Camera 的 Monitoring / Recording。"
@@ -135,6 +136,7 @@ window.FAE.notes.push(
     moduleId: "vms-live-view-layout",
     type: "feature",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-live-view-layout-01", "vms-live-view-layout-03"],
@@ -264,6 +266,7 @@ window.FAE.notes.push(
     relatedModules: ["vms-system-license"],
     type: "qa",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-live-view-layout-02","vms-system-license-01"],
@@ -321,7 +324,7 @@ window.FAE.notes.push(
       {
         type: "note",
         title: "實測結論",
-        content: "兩邊即使選擇相同 Camera 與事件，仍須分別設定。<br><code>Layout &gt; <br>Popup Window</code> 會將事件影像顯示在指定的 Popup Window；<code>Configure &gt; Camera Popup Setting</code> 則會依 Zoom Window 是否存在，決定事件影像顯示在 Zoom Window 或以單分割佔滿主顯示器。"
+        content: "兩邊即使選擇相同 Camera 與事件，仍須分別設定。<br><code>Layout &gt; Popup Window</code> 會將事件影像顯示在指定的 Popup Window；<br><code>Configure &gt; Camera Popup Setting</code> 則會依 Zoom Window 是否存在，決定事件影像顯示在 Zoom Window 或以單分割佔滿主顯示器。"
       },
       {
         type: "callout",

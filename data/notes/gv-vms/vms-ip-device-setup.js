@@ -27,6 +27,7 @@ window.FAE.notes.push(
     moduleId: "vms-ip-device-setup",
     type: "feature",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-ip-device-setup-02", "vms-ip-device-setup-03", "vms-ip-device-setup-04", "vms-ip-device-setup-05", "vms-ip-device-setup-06", "vms-license-01"],
@@ -122,6 +123,7 @@ window.FAE.notes.push(
     moduleId: "vms-ip-device-setup",
     type: "procedure",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-ip-device-setup-01", "protocol-1"],
@@ -130,7 +132,7 @@ window.FAE.notes.push(
     devices: [],
     tags: ["Add Camera", "手動設定"],
 
-    evidenceTypes: ["official"],
+    evidenceTypes: ["official", "tested"],
     hasOpenQuestions: false,
 
     sources: [{ sourceId: "manual-vms-v20", chapter: "2.1.1 Adding Cameras Manually", pages: "97–98", keywords: ["Adding Cameras Manually", "Camera Streaming Settings"] }],
@@ -217,6 +219,7 @@ window.FAE.notes.push(
     moduleId: "vms-ip-device-setup",
     type: "procedure",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-ip-device-setup-01"],
@@ -290,6 +293,7 @@ window.FAE.notes.push(
     moduleId: "vms-ip-device-setup",
     type: "procedure",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-ip-device-setup-01"],
@@ -373,6 +377,7 @@ window.FAE.notes.push(
     moduleId: "vms-ip-device-setup",
     type: "procedure",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-ip-device-setup-01"],
@@ -381,7 +386,7 @@ window.FAE.notes.push(
     devices: [],
     tags: ["IP Device Utility", "Import Camera", ".ipcd"],
 
-    evidenceTypes: ["official"],
+    evidenceTypes: ["official", "tested"],
     hasOpenQuestions: false,
 
     sources: [
@@ -488,6 +493,7 @@ window.FAE.notes.push(
     moduleId: "vms-ip-device-setup",
     type: "feature",
     status: "published",
+    updated: "2026-07-31",
 
     relatedAreas: [],
     related: ["vms-ip-device-setup-01"],

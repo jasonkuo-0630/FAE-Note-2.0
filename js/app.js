@@ -245,6 +245,12 @@
     const relatedChip = event.target.closest(".related-chip");
     if (relatedChip) {
       jumpToNote(relatedChip.dataset.noteId);
+      return;
+    }
+
+    const miniListItem = event.target.closest(".mini-list-item");
+    if (miniListItem) {
+      jumpToNote(miniListItem.dataset.noteId);
     }
   });
 

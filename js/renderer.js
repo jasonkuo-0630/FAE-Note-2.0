@@ -30,6 +30,27 @@ window.FAE.renderMiniEmpty = function renderMiniEmpty(message) {
   `;
 };
 
+/* 工作台卡片：有資料就顯示清單（點了直接跳到那篇筆記），沒有才顯示空狀態文字 */
+window.FAE.renderMiniList = function renderMiniList(notes, emptyMessage, limit = 5) {
+  if (!notes.length) return window.FAE.renderMiniEmpty(emptyMessage);
+  return `
+    <ul class="mini-list">
+      ${notes
+        .slice(0, limit)
+        .map(
+          (note) => `
+            <li>
+              <button type="button" class="mini-list-item" data-note-id="${window.FAE.escapeHtml(note.id)}">
+                ${window.FAE.escapeHtml(note.title)}
+              </button>
+            </li>
+          `
+        )
+        .join("")}
+    </ul>
+  `;
+};
+
 window.FAE.renderHome = function renderHome() {
   const stats = window.FAE.getStats();
   const areaChips = window.FAE.areas
@@ -39,17 +60,26 @@ window.FAE.renderHome = function renderHome() {
     )
     .join("");
 
+  const reviewNotes = window.FAE.notes.filter(
+    (note) => note.status === "review" || note.hasOpenQuestions
+  );
+  const testedNotes = window.FAE.notes.filter((note) =>
+    (note.evidenceTypes || []).includes("tested")
+  );
+  const recentNotes = [...window.FAE.notes]
+    .filter((note) => note.updated)
+    .sort((a, b) => (b.updated > a.updated ? 1 : b.updated < a.updated ? -1 : 0));
+
   return `
     <section class="hero-panel">
       <div class="hero-copy">
         <div class="eyebrow">FAE 工作知識庫</div>
-        <h1 class="page-title">把每次學會的事，變成下次能直接找到的答案。</h1>
         <p class="page-subtitle">
           從產品定位、操作流程，到實測結果與問題排查；每項重要結論都保留來源、版本與適用環境。
         </p>
         <div class="hero-status">
           <span class="hero-status-dot"></span>
-          2.0 架構已建立，目前尚無正式筆記
+          ${stats.total > 0 ? `2.0 架構已建立，目前共 ${stats.total} 篇正式筆記` : "2.0 架構已建立，目前尚無正式筆記"}
         </div>
       </div>
     </section>
@@ -86,21 +116,21 @@ window.FAE.renderHome = function renderHome() {
           <h3>最近更新</h3>
           <span class="card-kicker">Recent</span>
         </div>
-        ${window.FAE.renderMiniEmpty("尚無更新紀錄")}
+        ${window.FAE.renderMiniList(recentNotes, "尚無更新紀錄")}
       </article>
       <article class="dashboard-card">
         <div class="dashboard-card-header">
           <h3>待確認</h3>
           <span class="card-kicker">Review</span>
         </div>
-        ${window.FAE.renderMiniEmpty("目前沒有待確認項目")}
+        ${window.FAE.renderMiniList(reviewNotes, "目前沒有待確認項目")}
       </article>
       <article class="dashboard-card">
         <div class="dashboard-card-header">
           <h3>實測紀錄</h3>
           <span class="card-kicker">Lab</span>
         </div>
-        ${window.FAE.renderMiniEmpty("尚未加入實測資料")}
+        ${window.FAE.renderMiniList(testedNotes, "尚未加入實測資料")}
       </article>
     </section>
 
