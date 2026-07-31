@@ -104,3 +104,11 @@ window.FAE.getFilteredNotes = function getFilteredNotes() {
     );
   });
 };
+
+/* 目前篩選結果裡，真正「有 sections 內容可以展開」的筆記——
+   全部展開/收合按鈕只需要管這些，沒有內容的筆記不用理它。 */
+window.FAE.getExpandableNotes = function getExpandableNotes() {
+  return window.FAE
+    .getFilteredNotes()
+    .filter((note) => note.sections && note.sections.length);
+};

@@ -1,5 +1,6 @@
 (function startFAENotes() {
   const themeButton = document.getElementById("themeButton");
+  const expandAllButton = document.getElementById("expandAllButton");
   const searchInput = document.getElementById("searchInput");
   const statusFilters = document.getElementById("statusFilters");
   const typeFilters = document.getElementById("typeFilters");
@@ -92,6 +93,23 @@
         : window.FAE.state.viewId === "home"
           ? renderSearchResults()
           : window.FAE.renderView();
+    updateExpandAllButton();
+  }
+
+  function updateExpandAllButton() {
+    const onDashboard =
+      window.FAE.state.viewId === "home" && !window.FAE.state.query;
+    const expandable = onDashboard ? [] : window.FAE.getExpandableNotes();
+    if (!expandable.length) {
+      expandAllButton.disabled = true;
+      expandAllButton.textContent = "全部展開";
+      return;
+    }
+    expandAllButton.disabled = false;
+    const allExpanded = expandable.every((note) =>
+      window.FAE.state.expandedNotes.has(note.id)
+    );
+    expandAllButton.textContent = allExpanded ? "全部收合" : "全部展開";
   }
 
   function renderSearchResults() {
@@ -323,6 +341,19 @@
 
   searchInput.addEventListener("input", (event) => {
     window.FAE.state.query = event.target.value;
+    render();
+  });
+
+  expandAllButton.addEventListener("click", () => {
+    const expandable = window.FAE.getExpandableNotes();
+    if (!expandable.length) return;
+    const allExpanded = expandable.every((note) =>
+      window.FAE.state.expandedNotes.has(note.id)
+    );
+    expandable.forEach((note) => {
+      if (allExpanded) window.FAE.state.expandedNotes.delete(note.id);
+      else window.FAE.state.expandedNotes.add(note.id);
+    });
     render();
   });
 

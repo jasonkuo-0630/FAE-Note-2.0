@@ -21,7 +21,7 @@ window.FAE.evidenceTypes = [
 window.FAE.modules = {
   "gv-vms": [
     {
-      id: "overview-ui",
+      id: "vms-overview-ui",
       title: "系統概觀與操作介面",
       description: "VMS 定位、主畫面、工具列與基本操作邏輯。"
     },
