@@ -73,7 +73,7 @@ window.FAE.notes.push(
       {
         type: "note",
         title: "狀態燈補充",
-        content: "紅燈代表 Connection Failed，表示 VMS 無法連線到 Camera。可將滑鼠移到紅色圖示上查看錯誤訊息，再依錯誤內容檢查 IP、Port、帳號密碼、設備電源、網路連線或防火牆設定。"
+        content: "紅燈代表 Connection Failed，表示 VMS 無法連線到 Camera。<br>可將滑鼠移到紅色圖示上查看錯誤訊息，再依錯誤內容檢查 IP、Port、帳號密碼、設備電源、網路連線或防火牆設定。"
       },
       { type: "spacer" },
       {
@@ -160,8 +160,8 @@ window.FAE.notes.push(
           "<strong>Server IP</strong>：輸入 Camera 的 IP Address，例如 <code>192.168.0.10</code>",
           "<strong>HTTP Port</strong>：通常預設是 <code>80</code>，但如果 Camera Web Port 有被改過，就要依實際設定輸入",
           "<strong>User Name / Password</strong>：是 IP Camera 本身的帳號密碼，不是 VMS 的登入帳密",
-          "<strong>Brand</strong>：是設備品牌或加入方式，常見可能包含 GeoVision、USAVision、Protocol。其中 Protocol 不是品牌，而是用協定方式加入設備，例如 ONVIF、PSIA、RTSP over HTTP、RTSP over TCP、RTSP over UDP。",
-          "<strong>Device</strong> 會依照 Brand 不同而顯示不同選項。如果選 GeoVision，通常會看到自家 Camera 型號選單提供選擇；如果選 Protocol，則會看到 ONVIF、RTSP 等協定選項。"
+          "<strong>Brand</strong>：是設備品牌或加入方式，常見可能包含 GeoVision、USAVision、Protocol。<br>其中 Protocol 不是品牌，而是用協定方式加入設備，例如 ONVIF、PSIA、RTSP over HTTP、RTSP over TCP、RTSP over UDP。",
+          "<strong>Device</strong> 會依照 Brand 不同而顯示不同選項。<br>如果選 GeoVision，通常會看到自家 Camera 型號選單提供選擇；如果選 Protocol，則會看到 ONVIF、RTSP 等協定選項。"
         ]
       },
       {
@@ -183,7 +183,7 @@ window.FAE.notes.push(
       {
         type: "note",
         title: "實務注意",
-        content: "可以選擇 Auto Detect 自動偵測產品型號，後續新機種可能不會在選單列表中，這種狀況一律選擇<code>IP Device</code> "
+        content: "可以選擇 Auto Detect 自動偵測產品型號，後續新機種可能不會在選單列表中，這種狀況一律選擇最下方<code>IP Device</code> "
       },
       { type: "spacer" },
       {

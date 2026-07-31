@@ -9,6 +9,6 @@ window.FAE.sources.push({
   title: "GV-VMS User's Manual V20",
   publisher: "GeoVision",
   documentVersion: "V20",
-  url: "",
+  url: "https://dlcdn.geovision.com.tw/Manual/VMS/EN/V20/GV-VMS_User_Manual_V20.pdf",
   language: "English"
 });
