@@ -22,7 +22,7 @@ window.FAE.notes.push(
     updated: "2026-07-31",
 
     relatedAreas: [],
-    related: ["ipcam-1", "vms-ip-device-setup-01", "arch-1", "cms-1", "asmgr-1", "recorder-1", "vms-systemconfig-01"],
+    related: ["vms-ip-device-setup-01", "arch-1", "cms-1", "asmgr-1", "recorder-1", "vms-systemconfig-01"],
 
     versions: ["V20.1.0"],
     devices: [],
