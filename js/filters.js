@@ -69,6 +69,16 @@ window.FAE.getModuleById = function getModuleById(areaId, moduleId) {
   );
 };
 
+/* 判斷一篇筆記是否屬於某個章節：本身的 moduleId 相符，或是它額外標記了
+   relatedModules（例如同時想在 License 章節底下也看得到這篇 Live View 筆記）。
+   跟 relatedAreas 是同一種設計精神，只是換成章節層級。 */
+window.FAE.noteMatchesModule = function noteMatchesModule(note, moduleId) {
+  return (
+    note.moduleId === moduleId ||
+    (note.relatedModules || []).includes(moduleId)
+  );
+};
+
 window.FAE.getFilteredNotes = function getFilteredNotes() {
   return window.FAE.notes.filter((note) => {
     const matchesView = window.FAE.noteMatchesView(note, window.FAE.state.viewId);
@@ -80,7 +90,7 @@ window.FAE.getFilteredNotes = function getFilteredNotes() {
       note.type === window.FAE.state.type;
     const matchesModule =
       window.FAE.state.moduleId === "all" ||
-      note.moduleId === window.FAE.state.moduleId;
+      window.FAE.noteMatchesModule(note, window.FAE.state.moduleId);
     const matchesSearch = window.FAE.noteMatchesSearch(
       note,
       window.FAE.state.query

@@ -40,6 +40,12 @@ window.FAE.validateData = function validateData() {
       }
     });
 
+    (note.relatedModules || []).forEach((moduleId) => {
+      if (!validModules.has(moduleId)) {
+        issues.push(`筆記 ${note.id} 的相關章節不存在：${moduleId}`);
+      }
+    });
+
     (note.related || []).forEach((relatedId) => {
       if (!noteIds.has(relatedId)) {
         issues.push(`筆記 ${note.id} 的關聯不存在：${relatedId}`);

@@ -26,7 +26,7 @@ window.FAE.modules = {
       description: "VMS 定位、主畫面、工具列與基本操作邏輯。"
     },
     {
-      id: "live-view-layout",
+      id: "vms-live-view-layout",
       title: "Live View 與 Layout",
       description: "即時影像、分割、Layout 與顯示操作。"
     },
@@ -36,47 +36,47 @@ window.FAE.modules = {
       description: "Scan、Automatic Setup、Manual Add 與連線方式。"
     },
     {
-      id: "camera-stream",
+      id: "vms-camera-stream",
       title: "Camera 與串流設定",
       description: "Codec、Resolution、FPS、Bitrate、Stream 與 Camera Setting。"
     },
     {
-      id: "recording-storage",
+      id: "vms-recording-storage",
       title: "錄影、排程與儲存",
       description: "Record Mode、Schedule、Database 與錄影空間管理。"
     },
     {
-      id: "device-control",
+      id: "vms-device-control",
       title: "PTZ、Fisheye 與裝置控制",
       description: "Speed Dome、Motorized、Fisheye Dewarp、Joystick 與 Object Tracking。"
     },
     {
-      id: "playback-export",
+      id: "vms-playback-export",
       title: "Playback、搜尋與匯出",
       description: "ViewLog、事件搜尋、Backup 與 Save as AVI。"
     },
     {
-      id: "analytics-ai",
+      id: "vms-analytics-ai",
       title: "Video Analytics 與 AI Event",
       description: "Video Analytics、PVD、AI Event 與相關搜尋。"
     },
     {
-      id: "pos",
+      id: "vms-pos",
       title: "POS 整合",
       description: "POS Text Sender、Data Capture、Software Capture 與查詢。"
     },
     {
-      id: "io",
+      id: "vms-io",
       title: "I/O 整合",
       description: "IP Device、I/O Box、Input、Output 與事件應用。"
     },
     {
-      id: "remote-services",
+      id: "vms-remote-services",
       title: "遠端連線與服務",
       description: "WebCam Server 與由 GV-VMS 啟用的遠端存取功能。"
     },
     {
-      id: "system-license",
+      id: "vms-system-license",
       title: "License、系統設定與維護",
       description: "System Configure、System Log、Dongle、Software License 與維護設定。"
     }

@@ -11,7 +11,7 @@ window.FAE.countNotesForModule = function countNotesForModule(
   return window.FAE.notes.filter(
     (note) =>
       window.FAE.noteMatchesView(note, areaId) &&
-      note.moduleId === moduleId
+      window.FAE.noteMatchesModule(note, moduleId)
   ).length;
 };
 

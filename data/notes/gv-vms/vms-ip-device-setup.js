@@ -384,7 +384,14 @@ window.FAE.notes.push(
     evidenceTypes: ["official"],
     hasOpenQuestions: false,
 
-    sources: [{ sourceId: "manual-vms-v20", chapter: "2.1.3 Mapping GV-IP Cameras Using GV-IP Device Utility", pages: "100", keywords: ["Mapping GV-IP Cameras", "GV-IP Device Utility"] }],
+    sources: [
+      { 
+        sourceId: "manual-vms-v20", 
+        chapter: "2.1.3 Mapping GV-IP Cameras Using GV-IP Device Utility", 
+        pages: "100", 
+        keywords: ["Mapping GV-IP Cameras", "GV-IP Device Utility"] 
+      }
+    ],
 
     sections: [
       {
