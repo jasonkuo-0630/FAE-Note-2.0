@@ -275,15 +275,10 @@ window.FAE.notes.push(
       { type: "spacer" },
       {
         type: "text",
-        title: "Camera Lens 選單",
-        content: "設定 Camera 鏡頭種類。"
-      },
-      { type: "image", num: 2, label: "Video Setting：Camera Lens 下拉選單" },
-      {
-        type: "text",
         title: "Camera Lens",
         content: "告訴 VMS 這支 Camera 使用什麼鏡頭類型。<br>一般鏡頭通常使用 <code>General</code>；<code>Wide Angle</code> 用於修正廣角鏡頭邊緣變形；第三方魚眼 Camera 可依鏡頭選擇 <code>IMV1 Panorama</code> 或 <code>Fisheye</code>。<br>可用選項會依 Camera 型號與支援能力而異；部分 GV 特殊鏡頭可能由系統自動辨識，無法手動改成其他類型。"
       },
+      { type: "image", num: 2, label: "Video Setting：Camera Lens 下拉選單" },
       {
         type: "note",
         title: "V20 補充：Illumination Mode",
@@ -643,8 +638,8 @@ window.FAE.notes.push(
     related: [
       "vms-camera-stream-06",
       "vms-camera-stream-08",
-      "vms-recordsetting-01",
-      "vms-recordsetting-03"
+      "vms-recording-storage-01",
+      "vms-recording-storage-03"
     ],
 
     versions: ["V20.1.0"],

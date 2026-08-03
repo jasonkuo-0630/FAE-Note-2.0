@@ -498,7 +498,7 @@ window.FAE.notes.push(
     updated: "2026-07-31",
 
     relatedAreas: [],
-    related: ["vms-ip-device-setup-01", "vms-camera-stream-04"],
+    related: ["vms-ip-device-setup-01", "vms-camera-stream-04", "vms-recording-storage-02"],
 
     versions: ["V20.1.0"],
     devices: [],
