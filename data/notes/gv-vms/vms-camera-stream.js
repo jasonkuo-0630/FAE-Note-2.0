@@ -90,14 +90,14 @@ window.FAE.notes.push(
         type: "list",
         title: "進入後左側選單共有 8 個頁籤",
         items: [
-          "<strong>General Setting</strong>：Camera 名稱、連線資訊、時間同步",
-          "<strong>Video Setting</strong>：畫面亮度對比、方向、鏡頭類型",
-          "<strong>Video Stream</strong>：Main/Sub Stream、Codec、解析度、Bitrate",
+          "<strong>General Setting</strong>：Camera 名稱、連線資訊、時間同步。",
+          "<strong>Video Setting</strong>：畫面亮度對比、方向、鏡頭類型。",
+          "<strong>Video Stream</strong>：Main/Sub Stream、Codec、解析度、Bitrate。",
           "<strong>Audio Setting</strong>：音量增益、播放、錄音模式",
-          "<strong>Abnormality</strong>：Camera 異常時的反應方式（I/O、Alarm、Notification）",
-          "<strong>Record</strong>：錄影編碼格式、幀率策略",
-          "<strong>Advanced</strong>：Live View 顯示效能、解碼負擔",
-          "<strong>POE Switch</strong>：透過具備 Web management 功能的 GV-POE Switch 遠端重啟指定 Camera"
+          "<strong>Abnormality</strong>：Camera 異常時的反應方式（I/O、Alarm、Notification）。",
+          "<strong>Record</strong>：錄影編碼格式、幀率策略。",
+          "<strong>Advanced</strong>：Live View 顯示效能、解碼負擔。",
+          "<strong>POE Switch</strong>：透過具備 Web management 功能的 GV-POE Switch 遠端重啟指定 Camera。"
         ]
       },
       { type: "spacer" },
@@ -251,11 +251,11 @@ window.FAE.notes.push(
         type: "list",
         title: "Video Attribute（影像屬性）",
         items: [
-          "<strong>Brightness</strong> 亮度：調整後影響整體畫面明暗",
-          "<strong>Contrast</strong> 對比：對比越高，亮暗差異越明顯；對比太低，畫面可能會灰灰的",
-          "<strong>Saturation</strong> 飽和度：調整後影響顏色鮮豔程度",
-          "<strong>Sharpness</strong> 銳利度：調太高可能讓邊緣變得很硬，甚至出現雜訊感",
-          "<strong>Gamma</strong>：中間調亮度曲線，不是單純把整張畫面變亮或變暗，而是影響暗部、中間調與亮部之間的明暗分布"
+          "<strong>Brightness</strong> 亮度：調整後影響整體畫面明暗。",
+          "<strong>Contrast</strong> 對比：對比越高，亮暗差異越明顯；對比太低，畫面可能會灰灰的。",
+          "<strong>Saturation</strong> 飽和度：調整後影響顏色鮮豔程度。",
+          "<strong>Sharpness</strong> 銳利度：調太高可能讓邊緣變得很硬，甚至出現雜訊感。",
+          "<strong>Gamma</strong>：中間調亮度曲線，不是單純把整張畫面變亮或變暗，而是影響暗部、中間調與亮部之間的明暗分布。"
         ]
       },
       {
@@ -403,7 +403,7 @@ window.FAE.notes.push(
         items: [
           "<strong>CBR（Constant Bitrate，固定位元率）</strong>：以設定的目標 Bitrate 傳輸，並透過調整影像品質盡量維持該資料率，因此頻寬與儲存需求較容易估算。<br>當畫面非常複雜或高速移動時，受限於既定位元率，畫質可能下降。",
           "<strong>VBR（Variable Bitrate，可變位元率）</strong>：以盡量維持影像品質為目標，Bitrate 會隨畫面複雜度改變；也可設定 Max. Bitrate 作為上限，或選 Auto 不啟用上限。<br>相較 CBR，頻寬與儲存用量較會隨場景變化。",
-          "<strong>Smart Stream（智慧串流）</strong>：在 GV-VMS V20.1.0 的 Video Stream 介面中，Smart Stream 是與 VBR、CBR 並列的串流模式選項。啟用後，Camera 可在畫面較靜態時降低 Bitrate，以減少頻寬與錄影空間使用量；<br>實際調整方式仍取決於 Camera 型號與 Firmware。V20 的 VMS 介面不再顯示舊版的 Static Scene、Dynamic Scene 與 Bitrate Reduction Level 細部設定。"
+          "<strong>Smart Stream（智慧串流）</strong>：在 GV-VMS V20.1.0 的 Video Stream 介面中，Smart Stream 是與 VBR、CBR 並列的串流模式選項。<br>啟用後，Camera 可在畫面較靜態時降低 Bitrate，以減少頻寬與錄影空間使用量；實際調整方式仍取決於 Camera 型號與 Firmware。<br>V20 的 VMS 介面不再顯示舊版的 Static Scene、Dynamic Scene 與 Bitrate Reduction Level 細部設定。"
         ]
       },
       { type: "spacer" },
@@ -520,17 +520,17 @@ window.FAE.notes.push(
         type: "list",
         title: "Audio Setting 相關設定說明",
         items: [
-          "<strong>Audio Gain</strong>：調整 Camera 麥克風的增益。實際能否調整會依 Camera 與連線狀態而異；欄位呈現灰階時代表目前不可設定",
-          "<strong>Wave Out</strong>：不是 VMS 對 Camera 端喊話，而是決定是否讓該 IP Camera 在 VMS 裡具備播放聲音的功能。<br>開啟後分割畫面上會出現 Wave Out 按鈕，按下可聽到 Camera 回傳到 VMS 的聲音，聲音大小與 Audio Gain 有關",
-          "<strong>Denoise</strong>：降噪功能，可降低部分背景雜音，但不代表能完全消除所有噪音"
+          "<strong>Audio Gain</strong>：調整 Camera 麥克風的增益。實際能否調整會依 Camera 與連線狀態而異；欄位呈現灰階時代表目前不可設定。",
+          "<strong>Wave Out</strong>：不是 VMS 對 Camera 端喊話，而是決定是否讓該 IP Camera 在 VMS 裡具備播放聲音的功能。<br>開啟後分割畫面上會出現 Wave Out 按鈕，按下可聽到 Camera 回傳到 VMS 的聲音，聲音大小與 Audio Gain 有關。",
+          "<strong>Denoise</strong>：降噪功能，可降低部分背景雜音，但不代表能完全消除所有噪音。"
         ]
       },
       {
         type: "list",
         title: "Rec Audio（錄音功能，不是錄影）",
         items: [
-          "<strong>By Sensitivity</strong>：當音量達到指定的 Sensitivity Level 時啟動錄音。<br>官方手冊未進一步定義滑桿數值與實際分貝門檻的換算，不宜直接把數字當成固定音量值",
-          "<strong>Round-the-Clock Audio</strong>：持續錄音，不依聲音大小觸發，而是持續記錄音訊"
+          "<strong>By Sensitivity</strong>：當音量達到指定的 Sensitivity Level 時啟動錄音。<br>官方手冊未進一步定義滑桿數值與實際分貝門檻的換算，不宜直接把數字當成固定音量值。",
+          "<strong>Round-the-Clock Audio</strong>：持續錄音，不依聲音大小觸發，而是持續記錄音訊。"
         ]
       },
       {
@@ -586,13 +586,15 @@ window.FAE.notes.push(
     sections: [
       {
         type: "text",
-        content: "Abnormality 不是調整影像品質，而是設定 Camera 出問題時，系統要怎麼偵測、通知或觸發後續動作。常見項目包含 Network Time Out、Video Lost / Connection Lost（I/O / Invoke Alarm / Notification）、MessageBox Setting。"
+        content: "Abnormality 不是調整影像品質，而是設定 Camera 出問題時，系統要怎麼偵測、通知或觸發後續動作。<br>常見項目包含 Network Time Out、Video Lost / Connection Lost（I/O / Invoke Alarm / Notification）、MessageBox Setting。"
       },
+      { type: "spacer" },
       {
-        type: "image",
-        num: 1,
-        label: "Abnormality 設定畫面"
+        type: "text",
+        title: "Abnormality 設定畫面",
+        content: "此頁面可針對 Camera 異常事件的偵測與反應方式做設定。"
       },
+      { type: "image", num: 1, label: "Abnormality 設定畫面" },
       {
         type: "text",
         title: "Network Time Out",
@@ -601,22 +603,23 @@ window.FAE.notes.push(
       {
         type: "note",
         title: "實務補充",
-        content: "Network Time Out 可用來避免短暫網路抖動立刻被呈現為逾時狀態。不過 V20 官方手冊只明確記載「超過時間後狀態圖示變黃」，沒有說明所有斷線 Log 都會等到 Time Out 後才寫入，因此不要把它直接等同於 Log 防洗版功能。"
+        content: "Network Time Out 可用來避免短暫網路抖動立刻被呈現為逾時狀態。<br>不過 V20 官方手冊只明確記載「超過時間後狀態圖示變黃」，沒有說明所有斷線 Log 都會等到 Time Out 後才寫入，因此不要把它直接等同於 Log 防洗版功能。"
       },
       {
         type: "list",
         title: "三種異常反應方式的差異",
         items: [
-          "<strong>I/O</strong>：偏向外部設備動作，把 Camera 異常轉成實體動作（警示燈、蜂鳴器、Relay）",
-          "<strong>Invoke Alarm</strong>：偏向系統內部警報流程，例如跳出警示、觸發警報聲",
-          "<strong>Notification</strong>：偏向通知使用者知道發生異常，不直接控制外部設備"
+          "<strong>I/O</strong>：偏向外部設備動作，把 Camera 異常轉成實體動作（警示燈、蜂鳴器、Relay）。",
+          "<strong>Invoke Alarm</strong>：偏向系統內部警報流程，例如跳出警示、觸發警報聲。",
+          "<strong>Notification</strong>：偏向通知使用者知道發生異常，不直接控制外部設備。"
         ]
       },
       {
         type: "text",
         title: "MessageBox Setting",
-        content: "啟用後，GV-VMS 在偵測到 Network Congestion 時會顯示 Message Box。若頻繁出現，可再從 Camera 數量、Bitrate、可用頻寬、Switch 負載、封包延遲或遺失等方向排查；這些是故障排除方向，不代表每次提示都由同一原因造成。"
+        content: "啟用後，GV-VMS 在偵測到 Network Congestion 時會顯示 Message Box。<br>若頻繁出現，可再從 Camera 數量、Bitrate、可用頻寬、Switch 負載、封包延遲或遺失等方向排查；這些是故障排除方向，不代表每次提示都由同一原因造成。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
@@ -682,27 +685,25 @@ window.FAE.notes.push(
         type: "text",
         content: "Record 設定主要包含 Recording codec format、Recording frame rate control，會影響錄影檔案格式、Playback 畫面呈現、錄影流暢度與儲存空間使用量。"
       },
+      { type: "spacer" },
       {
-        type: "image",
-        num: 1,
-        label: "Record 設定畫面"
+        type: "text",
+        title: "Record 設定畫面",
+        content: "此頁面可針對 Camera 的 Codec 與錄影策略進行設定。"
       },
+      { type: "image", num: 1, label: "Record 設定畫面" },
       {
         type: "text",
         title: "Recording codec format：Standard vs GeoVision codec",
-        content: "官方 V20 手冊明確說明此處可選 Standard 或 GeoVision codec，但沒有在 2.2.6 節直接解釋兩者對 Privacy Mask 的差異。下列 Playback 行為屬於目前內部操作／實測結論，應與官方定義分開閱讀。"
+        content: "官方 V20 手冊明確說明此處可選 Standard 或 GeoVision codec，但沒有解釋兩者對 Privacy Mask 的差異。<br>下列 Playback 行為屬於目前同事補充與實測結論。"
       },
       {
         type: "list",
         title: "",
         items: [
-          "<strong>Standard codec（內部實測）</strong>：若 Privacy Mask 是 VMS 軟體端處理，而不是 Camera 本身已輸出遮罩後畫面，Playback 可能回到未套用該軟體效果的影像",
-          "<strong>GeoVision codec（內部實測）</strong>：Playback 可保留 GV-VMS 軟體端處理效果，例如 Privacy Mask"
+          "<strong>Standard codec（內部實測）</strong>：若 Privacy Mask 是 VMS 軟體端處理，而不是 Camera 本身已輸出遮罩後畫面，Playback 可能回到未套用該軟體效果的影像。",
+          "<strong>GeoVision codec（內部實測）</strong>：Playback 可保留 GV-VMS 軟體端處理效果，例如 Privacy Mask。"
         ]
-      },
-      {
-        type: "text",
-        content: "若案場要求回放時也必須維持遮罩，不能只憑 codec 名稱判斷；部署前應以實際 VMS 版本、Privacy Mask 類型（Recoverable／Unrecoverable）、Camera 與錄影格式做一次 Playback 驗證。"
       },
       {
         type: "text",
@@ -713,19 +714,15 @@ window.FAE.notes.push(
         type: "list",
         title: "",
         items: [
-          "<strong>Urgent Event</strong> 通常建議保留較完整的錄影資訊，設為 Maximum record frame rate：畫面流暢、細節完整，但檔案較大",
-          "<strong>General Event</strong> 可設為 Record key frame only：節省儲存空間，但只錄 Key Frame，畫面連續性與細節還原能力會降低"
+          "<strong>Urgent Event</strong> 通常建議保留較完整的錄影資訊，設為 Maximum record frame rate：畫面流暢、細節完整，但檔案較大。",
+          "<strong>General Event</strong> 可設為 Record key frame only：節省儲存空間，但只錄 Key Frame，畫面連續性與細節還原能力會降低。"
         ]
       },
-      {
-        type: "note",
-        title: "Codec 條件",
-        content: "使用 MJPEG 時每張都是 Key Frame，Maximum record frame rate 與 Record key frame only 會呈現灰階；使用 H.264／H.265 時，才可針對 Urgent／General Event 選擇完整影格率或只錄 Key Frame。"
-      },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
-        content: "Standard 看原始，GeoVision 留處理；Maximum frame rate 錄得完整但佔空間，Key frame only 省空間但細節少。有隱私遮罩需求時要特別注意 codec 選項。"
+        content: "Standard 看原始，GeoVision 留處理；Maximum frame rate 錄得完整但佔空間，Key frame only 省空間但細節少。<br>有隱私遮罩需求時要特別注意 codec 選項。"
       }
     ]
   },
@@ -770,26 +767,29 @@ window.FAE.notes.push(
         type: "text",
         content: "Advanced 設定主要影響 Live View 顯示效能、解碼負擔、多畫面觀看流暢度，包含 Caching、On Demand Display、Frame rate control for live view decoding、Set sub stream frame rate to all cameras。"
       },
+      { type: "spacer" },
       {
-        type: "image",
-        num: 1,
-        label: "Advanced 設定畫面"
+        type: "text",
+        title: "Advanced 設定畫面",
+        content: "此頁面可針對 Camera 的進階效能設定做調整。"
       },
+      { type: "image", num: 1, label: "Advanced 設定畫面" },
       {
         type: "list",
-        title: "",
+        title: "Advanced 設定欄位說明",
         items: [
-          "<strong>Caching</strong>：指定延後 Live View 解碼的毫秒數。網路不穩或影格到達間隔不平均時，可用少量延遲換取較平順的顯示；此欄位只能在 Camera 斷線時設定，且不會改變已錄下的影片內容",
-          "<strong>On Demand Display</strong>：適用於已啟用不同解析度 Dual Stream 的 Camera。當畫面顯示尺寸超過 Sub Stream 解析度的指定倍率時，切換到較高解析度串流（通常為 Main Stream）；畫面較小時使用較低解析度串流，以兼顧畫質與 CPU 使用量",
-          "<strong>Frame rate control for live view decoding</strong>：分 Main Stream / Sub Stream 各自設定 Maximum live-view frame rate（順但吃效能）或 Live-view key frame only（省效能但不夠順）",
-          "<strong>Set sub stream frame rate to all cameras</strong>：快速統一所有 Camera 的 Sub Stream FPS，可在 1～15 fps 間調整。官方預設邏輯為 1～32 CH 設為 15 fps，超過 32 CH 設為 7 fps"
+          "<strong>Caching</strong>：指定延後 Live View 解碼的毫秒數。<br>網路不穩或影格到達間隔不平均時，可用少量延遲換取較平順的顯示；此欄位只能在 Camera 斷線時設定，且不會改變已錄下的影片內容。",
+          "<strong>On Demand Display</strong>：適用於已啟用不同解析度 Dual Stream 的 Camera。<br>當畫面顯示尺寸超過 Sub Stream 解析度的指定倍率時，切換到較高解析度串流（通常為 Main Stream）；畫面較小時使用較低解析度串流，以兼顧畫質與 CPU 使用量。",
+          "<strong>Frame rate control for live view decoding</strong>：分 Main Stream / Sub Stream 各自設定 Maximum live-view frame rate（順但吃效能）或 Live-view key frame only（省效能但不夠順）。",
+          "<strong>Set sub stream frame rate to all cameras</strong>：快速統一所有 Camera 的 Sub Stream FPS，可在 1～15 fps 間調整。<br>官方預設邏輯為 1～32 CH 設為 15 fps，超過 32 CH 設為 7 fps。"
         ]
       },
       {
         type: "note",
         title: "On Demand Display 限制",
-        content: "官方手冊註明：On Demand Display 不支援 Privacy Mask，也不支援 GV-Fisheye Camera。若功能沒有生效，先確認 Dual Stream、兩條 Stream 的解析度差異與 Camera 類型。"
+        content: "官方手冊註明 On Demand Display 不支援 Privacy Mask，也不支援 GV-Fisheye Camera。<br>若功能沒有生效，先確認 Dual Stream、兩條 Stream 的解析度差異與 Camera 類型。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
@@ -837,20 +837,24 @@ window.FAE.notes.push(
         type: "text",
         content: "POE Switch 頁籤主要是用來透過 POE Switch 管理 IP Camera，目前畫面中看到的功能是 <strong>Reboot IP Camera via POE Switch</strong>，可透過 GV-POE Switch 遠端重啟指定 IP Camera。"
       },
-      {
-        type: "image",
-        num: 1,
-        label: "POE Switch 設定畫面：Reboot IP Camera via POE Switch"
-      },
+      { type: "spacer" },
       {
         type: "text",
-        content: "這裡要注意：這個功能<strong>不是重啟整台 POE Switch</strong>，而是透過具備 Web management 功能的 GV-POE Switch 重啟指定 Camera。畫面中可以設定 Network Adapter、Port、POE Switch ID、POE Switch Password；實際可用欄位與掃描流程依 Switch 型號與介面為準。"
+        title: "POE Switch 設定畫面",
+        content: "此頁面可針對具備 Web management 功能的 GV-POE Switch 設定遠端重啟指定 Camera。"
       },
+      { type: "image", num: 1, label: "POE Switch 設定畫面：Reboot IP Camera via POE Switch" },
+      {
+        type: "text",
+        content: "這裡要注意：這個功能<strong>不是重啟整台 POE Switch</strong>，而是透過具備 Web management 功能的 GV-POE Switch 重啟指定 Camera。<br>畫面中可以設定 Network Adapter、Port、POE Switch ID、POE Switch Password；實際可用欄位與掃描流程依 Switch 型號與介面為準。"
+      },
+      { type: "spacer" },
       {
         type: "text",
         title: "2026/06/12 更新確認",
-        content: "同事確認此功能的實務目的，是透過 Switch 端讓指定 Camera 重新上電，免於到現場拔線。官方 V20 手冊明確要求使用具備 Web management 功能的 GV-POE Switch，但沒有寫成「只有 APOE 型號支援」；實際支援型號仍應以該 Switch 規格與 Firmware 為準。"
+        content: "同事確認此功能的實務目的，是透過 Switch 端讓指定 Camera 重新上電，免於到現場拔線。<br>官方 V20 手冊明確要求使用具備 Web management 功能的 GV-POE Switch。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",

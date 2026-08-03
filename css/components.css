@@ -222,7 +222,6 @@
   cursor: pointer;
   font-size: 13px;
   white-space: nowrap;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .text-button:hover:not(:disabled) {
