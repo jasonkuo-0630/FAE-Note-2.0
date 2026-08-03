@@ -34,7 +34,7 @@ window.FAE.notes.push(
 
     versions: ["V20.1.0"],
     devices: [],
-    tags: ["IP Device Setup", "總覽", "Camera Install"],
+    tags: ["IP Device Setup", "Camera Install", "總覽", "進入方式"],
 
     evidenceTypes: ["official"],
     hasOpenQuestions: false,
@@ -106,6 +106,7 @@ window.FAE.notes.push(
           "正式環境建議使用 Dual Streams，方便 Live View、錄影與效能分配。"
         ]
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
@@ -476,6 +477,7 @@ window.FAE.notes.push(
         title: "實務注意",
         content: "使用 GV-IP Device Utility 整理設備時，仍需確認 Camera IP、MAC Address、帳號密碼與 channel 對應是否正確，避免匯入後 Camera 順序或設備對應錯誤。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
@@ -496,7 +498,7 @@ window.FAE.notes.push(
     updated: "2026-07-31",
 
     relatedAreas: [],
-    related: ["vms-ip-device-setup-01"],
+    related: ["vms-ip-device-setup-01", "vms-camera-stream-04"],
 
     versions: ["V20.1.0"],
     devices: [],
@@ -505,12 +507,24 @@ window.FAE.notes.push(
     evidenceTypes: ["official", "tested"],
     hasOpenQuestions: false,
 
-    sources: [{ sourceId: "manual-vms-v20", chapter: "2.1.1 Adding Cameras Manually", pages: "97–98", keywords: ["Dual Streams", "Stream Type", "Camera Streaming Settings"] }],
+    sources: [
+      { 
+        sourceId: "manual-vms-v20", 
+        chapter: "2.1.1 Adding Cameras Manually", 
+        pages: "97–98", 
+        keywords: 
+        [
+          "Dual Streams", 
+          "Stream Type", 
+          "Camera Streaming Settings"
+        ] 
+      }
+    ],
 
     sections: [
       {
         type: "text",
-        content: "加入 Camera 時，可能會遇到 Single Stream / Dual Streams 的選擇。這個選項與 Camera 本身支援的串流能力有關；有些 Camera 只支援單串流，有些支援雙串流，部分新機種甚至可能支援三串流以上。"
+        content: "加入 Camera 時，可能會遇到 Single Stream / Dual Streams 的選擇。<br>這個選項與 Camera 本身支援的串流能力有關；有些 Camera 只支援單串流，有些支援雙串流，部分新機種甚至可能支援三串流以上。"
       },
       { type: "spacer" },
       {
@@ -524,10 +538,16 @@ window.FAE.notes.push(
         title: "基本概念",
         content: "GV-VMS 端可以依照 Camera 支援能力與使用需求，決定使用單一影像串流，或使用雙影像串流來分配 Live View、錄影與顯示效能。"
       },
+      { type: "spacer" },
+      {
+        type: "text",
+        title: "Single / Dual Streams 設定畫面",
+        content: "選擇 VMS 使用單一串流或雙串流的設定畫面。"
+      },
       { type: "image", num: 1, label: "Single / Dual Streams 設定畫面" },
       {
         type: "list",
-        title: "Main Stream / Sub Stream 角色",
+        title: "Main Stream / Sub Stream 差異說明",
         items: [
           "<strong>Main Stream</strong>：通常是高解析度、高畫質，適合錄影、放大觀看與需要保留細節的情境。",
           "<strong>Sub Stream</strong>：通常是較低解析度、較低流量，適合多分割 Live View、即時預覽與降低 VMS 解碼負擔。",
@@ -538,17 +558,18 @@ window.FAE.notes.push(
       {
         type: "note",
         title: "實務補充",
-        content: "若 Camera 支援三串流，代表 Camera 端本身可以提供更多組影像串流設定；但在 GV-VMS 加入 Camera 時，仍需依 VMS 介面可選項與實際用途決定使用 Single Stream 或 Dual Streams。支援多串流不代表 VMS 一定會同時使用全部串流。"
+        content: "若 Camera 支援三串流，代表 Camera 端本身可以提供更多組影像串流設定；但在 GV-VMS 加入 Camera 時，仍需依 VMS 介面可選項與實際用途決定使用 Single Stream 或 Dual Streams。<br>支援多串流不代表 VMS 一定會同時使用全部串流。"
       },
       {
         type: "note",
         title: "選擇建議",
-        content: "正式環境通常會優先考慮 Dual Streams，讓 VMS 可用 Main Stream 保留錄影畫質，同時用 Sub Stream 降低多畫面 Live View 負擔。Single Stream 則適合設定較簡單、測試環境、設備支援有限，或使用者明確只需要單一路影像流的情境。"
+        content: "正式環境通常會優先考慮 Dual Streams，讓 VMS 可用 Main Stream 保留錄影畫質，同時用 Sub Stream 降低多畫面 Live View 負擔。<br>Single Stream 則適合設定較簡單、測試環境、設備支援有限，或使用者明確只需要單一路影像流的情境。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
-        content: "Single Stream = VMS 使用一條影像流；Dual Streams = Main 看細節 / 錄影，Sub 省資源 / 多畫面預覽。Camera 支援多串流，不代表 VMS 一定全部使用。"
+        content: "Single Stream = VMS 使用一條影像流；Dual Streams = Main 看細節 / 錄影，Sub 省資源 / 多畫面預覽。<br>Camera 支援多串流，不代表 VMS 一定全部使用。"
       }
     ]
   }

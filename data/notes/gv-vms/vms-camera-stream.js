@@ -100,6 +100,7 @@ window.FAE.notes.push(
           "<strong>POE Switch</strong>：透過具備 Web management 功能的 GV-POE Switch 遠端重啟指定 Camera"
         ]
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
@@ -166,7 +167,7 @@ window.FAE.notes.push(
       { type: "image", num: 1, label: "General Setting 頁籤畫面" },
       {
         type: "list",
-        title: "",
+        title: "General Setting 各欄位說明",
         items: [
           "<strong>Camera Name</strong>：建議案場上可以依位置命名（例如 1F_Entrance），在 Live View / Playback / Event Log 中比較好辨識；<br>名稱旁的三角形按鈕可讀取並套用 Camera Web 端的裝置名稱設定。",
           "<strong>IP / Port / User Name / Password</strong>：這是 Camera 本身的連線資訊，<strong>不是 VMS 登入帳密</strong>。<br>官方說明這些欄位只能在 Camera 斷線時修改；實務上可先停止連線，或取消該 Camera 在 IP Device Setup 中的勾選後再調整。",
@@ -179,6 +180,7 @@ window.FAE.notes.push(
         title: "實務補充",
         content: "<code>Sync Device Time With PC</code>在選擇 1～24 小時間隔後，Camera 會在連線時同步，並依指定間隔重新同步。<br>若設備不是 GV-IP Camera，仍應依實際 Protocol 與設備支援狀況確認。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
@@ -238,11 +240,13 @@ window.FAE.notes.push(
         type: "text",
         content: "Video Setting 主要用來調整 Camera 畫面顯示效果與鏡頭相關設定，項目包含 Video Attribute、Image Orientation、Camera Lens。"
       },
+      { type: "spacer" },
       {
-        type: "image",
-        num: 1,
-        label: "Video Setting：Video Attribute 與 Image Orientation"
+        type: "text",
+        title: "Video Attribute 與 Image Orientation 設定",
+        content: "對 Camera 的影像屬性與影像方向進行調整。"
       },
+      { type: "image", num: 1, label: "Video Setting：Video Attribute 與 Image Orientation" },
       {
         type: "list",
         title: "Video Attribute（影像屬性）",
@@ -258,30 +262,34 @@ window.FAE.notes.push(
         type: "text",
         content: "簡單記：Brightness 是整體亮度，Gamma 比較像調整灰階/中間調曲線。"
       },
+      { type: "spacer" },
       {
         type: "text",
         title: "Image Orientation（影像方向）",
-        content: "常見包含 Normal、Horizontal Mirror、Vertical Flip、Rotate 180°、Rotate 90° 與 Rotate 270°。未勾選 <code>Image Orientation by Software</code> 時，由 IP Camera 端處理影像方向；勾選後則改由 GV-VMS 軟體處理。Rotate 90°／270°（Corridor Format）僅支援部分 GV-IP Camera。"
+        content: "常見包含 Normal、Horizontal Mirror、Vertical Flip、Rotate 180°、Rotate 90° 與 Rotate 270°。<br>未勾選 <code>Image Orientation by Software</code> 時，由 IP Camera 端處理影像方向；勾選後則改由 GV-VMS 軟體處理。<br>Rotate 90°／270°（Corridor Format）僅支援部分 GV-IP Camera。"
       },
       {
         type: "text",
         content: "實務上若 Camera 本身支援，通常可優先由 Camera 端處理，避免把旋轉工作留給 VMS 軟體端；但實際效能差異仍會受 Camera 數量、解析度與主機硬體影響。"
       },
+      { type: "spacer" },
       {
-        type: "image",
-        num: 2,
-        label: "Video Setting：Camera Lens 下拉選單"
+        type: "text",
+        title: "Camera Lens 選單",
+        content: "設定 Camera 鏡頭種類。"
       },
+      { type: "image", num: 2, label: "Video Setting：Camera Lens 下拉選單" },
       {
         type: "text",
         title: "Camera Lens",
-        content: "告訴 VMS 這支 Camera 使用什麼鏡頭類型。一般鏡頭通常使用 <code>General</code>；<code>Wide Angle</code> 用於修正廣角鏡頭邊緣變形；第三方魚眼 Camera 可依鏡頭選擇 <code>IMV1 Panorama</code> 或 <code>Fisheye</code>。可用選項會依 Camera 型號與支援能力而異；部分 GV 特殊鏡頭可能由系統自動辨識，無法手動改成其他類型。"
+        content: "告訴 VMS 這支 Camera 使用什麼鏡頭類型。<br>一般鏡頭通常使用 <code>General</code>；<code>Wide Angle</code> 用於修正廣角鏡頭邊緣變形；第三方魚眼 Camera 可依鏡頭選擇 <code>IMV1 Panorama</code> 或 <code>Fisheye</code>。<br>可用選項會依 Camera 型號與支援能力而異；部分 GV 特殊鏡頭可能由系統自動辨識，無法手動改成其他類型。"
       },
       {
         type: "note",
         title: "V20 補充：Illumination Mode",
-        content: "部分 GV-IP Camera 會顯示 <code>Illumination Mode</code>，可選 Smart Supplement Light、White Light 或 Infrared Light。此功能只適用於特定型號；沒有出現此欄位不代表設定異常。"
+        content: "部分 GV-IP Camera 會顯示 <code>Illumination Mode</code>，可選 Smart Supplement Light、White Light 或 Infrared Light。<br>此功能只適用於特定型號；沒有出現此欄位不代表設定異常。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
@@ -310,10 +318,10 @@ window.FAE.notes.push(
 
     versions: ["V20.1.0"],
     devices: [],
-    tags: ["Video Stream", "Codec", "GOP", "Bitrate"],
+    tags: ["Video Stream", "Codec", "FPS", "Bitrate"],
 
     evidenceTypes: ["official", "tested"],
-    hasOpenQuestions: false,
+    hasOpenQuestions: true,
 
     sources: [
       {
@@ -348,13 +356,15 @@ window.FAE.notes.push(
     sections: [
       {
         type: "text",
-        content: "Video Stream 是設定 Camera 影像串流的地方，常見會分成 Main Stream（通常解析度較高，適合錄影或大畫面觀看）與 Sub Stream（通常解析度較低，適合多分割 Live View、降低 VMS 解碼負擔）。實際錄哪一條 Stream 仍以 Record Setting 的 Main／Sub／Both 選擇為準；Live View 使用哪一條則可能受 On Demand Display 影響。"
+        content: "Video Stream 是設定 Camera 影像串流的地方，常見會分成 Main Stream（通常解析度較高，適合錄影或大畫面觀看）與 Sub Stream（通常解析度較低，適合多分割 Live View、降低 VMS 解碼負擔）。<br>實際錄哪一條 Stream 仍以 Record Setting 的 Main／Sub／Both 選擇為準；Live View 使用哪一條則可能受 On Demand Display 影響。"
       },
+      { type: "spacer" },
       {
-        type: "image",
-        num: 1,
-        label: "Video Stream 設定畫面：Codec / FPS / GOP / Bitrate / Resolution"
+        type: "text",
+        title: "Video Stream 設定畫面",
+        content: "此頁面可針對 Camera 的 Main Stream 與 Sub Stream 做細項串流設定。"
       },
+      { type: "image", num: 1, label: "Video Stream 設定畫面：Codec / FPS / GOP / Bitrate / Resolution" },
       {
         type: "text",
         title: "Codec",
@@ -362,15 +372,15 @@ window.FAE.notes.push(
       },
       {
         type: "list",
-        title: "",
+        title: "Codec 選項與差異說明",
         items: [
-          "<strong>MJPEG</strong>：每一張影格都獨立編碼，可視為每張都是 Key Frame，逐格存取與錯誤恢復較直接；但在相近畫質下，通常會比 H.264／H.265 使用更多頻寬與儲存空間。畫質仍取決於解析度與壓縮品質，不能只因為是 MJPEG 就認定一定最清楚。",
-          "<strong>H.264 / H.265</strong>：利用影格之間的時間相關性壓縮，不需要每張都保存完整畫面。GOP 決定 Key Frame 的間隔；例如 GOP 設為 30，代表每 30 張插入 1 張 Key Frame，其餘為預測影格，因此通常能降低頻寬與儲存用量。"
+          "<strong>MJPEG</strong>：每一張影格都獨立編碼，可視為每張都是 Key Frame，逐格存取與錯誤恢復較直接；<br>但在相近畫質下，通常會比 H.264／H.265 使用更多頻寬與儲存空間。畫質仍取決於解析度與壓縮品質，不能只因為是 MJPEG 就認定一定最清楚。",
+          "<strong>H.264 / H.265</strong>：利用影格之間的時間相關性壓縮，不需要每張都保存完整畫面。<br>GOP 決定 Key Frame 的間隔；例如 GOP 設為 30，代表每 30 張插入 1 張 Key Frame，其餘為預測影格，因此通常能降低頻寬與儲存用量。"
         ]
       },
       {
         type: "text",
-        content: "<strong>H.264 與 H.265 的主要差異在壓縮效率與相容性需求</strong>：H.265 在相近畫質下通常更省頻寬與儲存空間，但解碼需求也可能較高，需要 Camera、GV-VMS 與硬體解碼環境都支援。實際選用仍要看設備相容性、主機效能與案場需求。"
+        content: "<strong>H.264 與 H.265 的主要差異在壓縮效率與相容性需求</strong>：H.265 在相近畫質下通常更省頻寬與儲存空間，但解碼需求也可能較高，需要 Camera、GV-VMS 與硬體解碼環境都支援。<br>實際選用仍要看設備相容性、主機效能與案場需求。"
       },
       {
         type: "text",
@@ -380,7 +390,7 @@ window.FAE.notes.push(
       {
         type: "text",
         title: "GOP",
-        content: "一組影格群組，代表每幾張影格中會有一張 Key Frame（概念見上方 Codec 說明）。GOP 越短，Key Frame 越頻繁，回放定位可能較方便，但資料量可能增加；GOP 越長，壓縮效率可能較好，但跳轉、回放或掉包恢復可能較不利。"
+        content: "一組影格群組，代表每幾張影格中會有一張 Key Frame（概念見上方 Codec 說明）。<br>GOP 越短，Key Frame 越頻繁，回放定位可能較方便，但資料量可能增加；GOP 越長，壓縮效率可能較好，但跳轉、回放或掉包恢復可能較不利。"
       },
       {
         type: "text",
@@ -389,38 +399,45 @@ window.FAE.notes.push(
       },
       {
         type: "list",
-        title: "",
+        title: "Bitrate 模式差異",
         items: [
-          "<strong>CBR（Constant Bitrate，固定位元率）</strong>：以設定的目標 Bitrate 傳輸，並透過調整影像品質盡量維持該資料率，因此頻寬與儲存需求較容易估算。當畫面非常複雜或高速移動時，受限於既定位元率，畫質可能下降。",
-          "<strong>VBR（Variable Bitrate，可變位元率）</strong>：以盡量維持影像品質為目標，Bitrate 會隨畫面複雜度改變；也可設定 Max. Bitrate 作為上限，或選 Auto 不啟用上限。相較 CBR，頻寬與儲存用量較會隨場景變化。",
-          "<strong>Smart Streaming（智慧串流）</strong>：針對 Static Scene 與 Dynamic Scene 分別設定影像品質與 Max. Bitrate，並可用 Bitrate Reduction Level 控制靜態場景的 Bitrate 降幅；數值越大，靜態場景可降低的 Bitrate 越多。"
+          "<strong>CBR（Constant Bitrate，固定位元率）</strong>：以設定的目標 Bitrate 傳輸，並透過調整影像品質盡量維持該資料率，因此頻寬與儲存需求較容易估算。<br>當畫面非常複雜或高速移動時，受限於既定位元率，畫質可能下降。",
+          "<strong>VBR（Variable Bitrate，可變位元率）</strong>：以盡量維持影像品質為目標，Bitrate 會隨畫面複雜度改變；也可設定 Max. Bitrate 作為上限，或選 Auto 不啟用上限。<br>相較 CBR，頻寬與儲存用量較會隨場景變化。",
+          "<strong>Smart Stream（智慧串流）</strong>：在 GV-VMS V20.1.0 的 Video Stream 介面中，Smart Stream 是與 VBR、CBR 並列的串流模式選項。啟用後，Camera 可在畫面較靜態時降低 Bitrate，以減少頻寬與錄影空間使用量；<br>實際調整方式仍取決於 Camera 型號與 Firmware。V20 的 VMS 介面不再顯示舊版的 Static Scene、Dynamic Scene 與 Bitrate Reduction Level 細部設定。"
         ]
       },
+      { type: "spacer" },
+      {
+        type: "text",
+        title: "VMS V17／V18 Smart Streaming 細部設定畫面",
+        content: "在 GV-VMS V17／V18 時期的介面中，Smart Streaming 可針對 Static Scene、Dynamic Scene 分別設定 Quality 與 Max. Bitrate，並提供 Bitrate Reduction Level。"
+      },
+      { type: "image", num: 2, label: "GV-VMS V17／V18 時期的 Smart Streaming 細部設定畫面；此畫面不代表 V20.1.0 仍提供相同欄位" },
       {
         type: "note",
-        content: "GeoVision 官方手冊在此處只明確說明 Static Scene、Dynamic Scene 與 Bitrate Reduction Level，未說明一定會辨識人、車或 ROI 後重新分配畫質，因此不宜把其他品牌 Smart Codec 的演算法直接套成 GV Smart Streaming 的固定行為。"
+        title: "版本差異與官方文件注意事項",
+        content: "GV-VMS V17／V18 時期的介面可針對 Static Scene、Dynamic Scene 分別設定 Quality 與 Max. Bitrate，並提供 Bitrate Reduction Level；這裡提供的畫面即屬於舊版介面。<br>GV-VMS V20 官方手冊 p.104 的設定畫面則只顯示 Smart Stream 模式選項，沒有上述細部欄位，但 p.105 的文字仍保留舊版欄位說明，文件內容存在前後不一致。<br>依目前 V20.1.0 介面與實測，筆記以「V20 僅選擇 Smart Stream 模式」為主，這裡僅作版本差異補充。"
       },
       {
         type: "text",
-        title: "實務補充：GV-VMS 上實際能設定到什麼程度",
-        content: "GV-VMS V20 官方手冊顯示，Video Stream 頁面可提供 Static Scene、Dynamic Scene 與 Bitrate Reduction Level 等 Smart Streaming 欄位；但 Quick Start Guide 也提醒，可用設定會依 Camera Firmware 與連線狀態而異。你在特定 GV-VMS V20.1.0／Camera 環境中只看到 Enable／Disable，應記錄為該設備組合的實測結果，不能概括成「VMS V20 一律只有開關」。若 VMS 未顯示細部欄位，再到 Camera Web UI 確認是否可設定。"
-      },
-      {
-        type: "image",
-        num: 2,
-        label: "Smart Streaming 細部設定畫面（Static Scene / Dynamic Scene / Bitrate Reduction Level）；實際是否顯示依 Camera／Firmware 而異"
+        title: "實務補充：V20 能設定到什麼程度",
+        content: "在目前 GV-VMS V20.1.0 的 Video Stream 介面中，Smart Stream 主要以模式選項呈現，不再由 VMS 提供 Static Scene、Dynamic Scene 與 Bitrate Reduction Level 等細部調整。<br>選擇此模式後，相關串流設定會套用到 IP Camera，但實際的動靜態判斷與 Bitrate 調整仍由 Camera 端及其 Firmware 支援能力決定。<br>若需要進一步確認或調整 Smart Streaming 參數，可查看 Camera Web UI 的影像編碼／串流設定頁面；是否提供細部欄位需依 Camera 型號與 Firmware 確認。"
       },
       {
         type: "table",
-        headers: ["項目", "欄位"],
+        headers: ["版本／介面", "Smart Streaming 設定方式對比"],
         rows: [
-          ["Static Scene（靜態畫面）", "Quality"],
-          ["Static Scene（靜態畫面）", "Max Bitrate"],
-          ["Dynamic Scene（動態畫面）", "Quality"],
-          ["Dynamic Scene（動態畫面）", "Max Bitrate"],
           [
-            "Bitrate Reduction Level",
-            "預設 0，可調範圍 5～250，數字越大代表壓低的位元率越多"
+            "GV-VMS V17／V18",
+            "可分別設定 Static Scene 與 Dynamic Scene 的 Quality、Max. Bitrate，並調整 Bitrate Reduction Level"
+          ],
+          [
+            "GV-VMS V20.1.0",
+            "VMS 端主要提供 Smart Stream 模式選項，不再顯示上述細部欄位"
+          ],
+          [
+            "Camera Web UI",
+            "是否可進一步調整 Smart Streaming 參數，依 Camera 型號與 Firmware 而異"
           ]
         ]
       },
@@ -429,10 +446,11 @@ window.FAE.notes.push(
         title: "Resolution",
         content: "可選解析度與畫面比例會依 Camera 型號、Stream 與 Firmware 而異；Fisheye 或其他特殊鏡頭可能提供 5:4、4:3 等比例，不能把一般 Camera 一律限定為只有 16:9。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
-        content: "MJPEG 每張獨立編碼，通常較吃頻寬；H.264／H.265 以 GOP 控制 Key Frame 間隔，H.265 通常壓縮效率較高但需確認解碼支援。CBR 較容易估算頻寬，VBR 會隨場景變化；V20 官方支援顯示 Smart Streaming 細部欄位，但實際可用項目仍依 Camera／Firmware 而異。"
+        content: "MJPEG 每張獨立編碼，通常較吃頻寬；H.264／H.265 以 GOP 控制 Key Frame 間隔。<br>CBR 較容易估算頻寬，VBR 會隨場景變化；Smart Stream 可在靜態場景降低 Bitrate。<br>V17／V18 可從 VMS 細調動靜態參數，V20.1.0 則主要只提供 Smart Stream 模式選擇，實際支援仍依 Camera 與 Firmware 而異。"
       }
     ]
   },
@@ -491,17 +509,19 @@ window.FAE.notes.push(
         type: "text",
         content: "Audio Setting 是 Camera 音訊相關設定，常見項目包含 Audio Gain、Wave Out、Denoise、Rec Audio、By Sensitivity、Round-the-Clock Audio、Audio Format。"
       },
+      { type: "spacer" },
       {
-        type: "image",
-        num: 1,
-        label: "Audio Setting 設定畫面"
+        type: "text",
+        title: "Audio Setting 設定畫面",
+        content: "此頁面可針對 Camera 的音訊相關設定做調整。"
       },
+      { type: "image", num: 1, label: "Audio Setting 設定畫面" },
       {
         type: "list",
-        title: "",
+        title: "Audio Setting 相關設定說明",
         items: [
           "<strong>Audio Gain</strong>：調整 Camera 麥克風的增益。實際能否調整會依 Camera 與連線狀態而異；欄位呈現灰階時代表目前不可設定",
-          "<strong>Wave Out</strong>：不是 VMS 對 Camera 端喊話，而是決定是否讓該 IP Camera 在 VMS 裡具備播放聲音的功能。開啟後分割畫面上會出現 Wave Out 按鈕，按下可聽到 Camera 回傳到 VMS 的聲音，聲音大小與 Audio Gain 有關",
+          "<strong>Wave Out</strong>：不是 VMS 對 Camera 端喊話，而是決定是否讓該 IP Camera 在 VMS 裡具備播放聲音的功能。<br>開啟後分割畫面上會出現 Wave Out 按鈕，按下可聽到 Camera 回傳到 VMS 的聲音，聲音大小與 Audio Gain 有關",
           "<strong>Denoise</strong>：降噪功能，可降低部分背景雜音，但不代表能完全消除所有噪音"
         ]
       },
@@ -509,7 +529,7 @@ window.FAE.notes.push(
         type: "list",
         title: "Rec Audio（錄音功能，不是錄影）",
         items: [
-          "<strong>By Sensitivity</strong>：當音量達到指定的 Sensitivity Level 時啟動錄音。官方手冊未進一步定義滑桿數值與實際分貝門檻的換算，不宜直接把數字當成固定音量值",
+          "<strong>By Sensitivity</strong>：當音量達到指定的 Sensitivity Level 時啟動錄音。<br>官方手冊未進一步定義滑桿數值與實際分貝門檻的換算，不宜直接把數字當成固定音量值",
           "<strong>Round-the-Clock Audio</strong>：持續錄音，不依聲音大小觸發，而是持續記錄音訊"
         ]
       },
@@ -518,6 +538,7 @@ window.FAE.notes.push(
         title: "Audio Format",
         content: "常見有 16 kHz, 16 bit / 32 kHz, 16 bit。32 kHz 通常可以保留更多音訊細節，但資料量也可能較高。"
       },
+      { type: "spacer" },
       {
         type: "callout",
         label: "記憶點",
